@@ -1,10 +1,18 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import { Space_Grotesk, Inter } from 'next/font/google'
 import './globals.css'
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+})
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
+  title: 'TeacherV2 · Reciclá y canjeá',
+  description:
+    'App de TeacherV2 para estudiantes: ganá puntos reciclando y canjealos por productos reales en el kiosco de tu institución.',
   generator: 'v0.app',
   icons: {
     icon: [
@@ -39,8 +47,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html
+      lang="es"
+      className={`light bg-background ${spaceGrotesk.variable} ${inter.variable}`}
+    >
+      <body className="antialiased font-sans">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
